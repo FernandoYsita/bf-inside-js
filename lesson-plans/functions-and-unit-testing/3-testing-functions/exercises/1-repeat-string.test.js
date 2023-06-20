@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Repeats a string a specific number of times.
  *
@@ -7,7 +5,9 @@
  * @param {number} repeats - The number of times to repeat.
  * @returns {string} The repeated string.
  */
-const repeatString = () => {};
+const repeatString = (text, repeats) => {
+  return text.repeat(repeats);
+};
 
 describe('repeatString: repeats a string a specific number of times', () => {
   it('repeats a string 0 times', () => {

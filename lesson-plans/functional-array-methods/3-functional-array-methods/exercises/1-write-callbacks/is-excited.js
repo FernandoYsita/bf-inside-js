@@ -1,7 +1,8 @@
 /**
- * returns true if a string is excited
- * (meaning it contains an "!")
- * @param {string} str - the string
- * @returns {boolean} is it excited?
+ * Returns true if a string is excited (meaning it contains an "!").
+ * @param {string} str - The string.
+ * @returns {boolean} - True if the string is excited, false otherwise.
  */
-export const isExcited = () => {};
+export const isExcited = (str) => {
+  return str.includes("!");
+};

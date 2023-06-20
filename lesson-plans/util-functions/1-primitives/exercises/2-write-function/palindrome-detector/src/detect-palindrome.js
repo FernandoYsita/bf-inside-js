@@ -14,9 +14,9 @@ const reverseInput = () => {
 
   // update the UI
   if (itIs) {
-    replaceClass('palinzone', 'not-palindrome', 'palindrome');
+    replaceClass('user-text', 'not-palindrome', 'palindrome');
   } else {
-    replaceClass('palinzone', 'palindrome', 'not-palindrome');
+    replaceClass('user-text', 'palindrome', 'not-palindrome');
   }
 };
 

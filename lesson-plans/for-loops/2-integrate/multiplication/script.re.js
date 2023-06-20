@@ -51,8 +51,7 @@ function _0xd99c() {
     '1468272UpOAFU',
     '1137472zQdtzn',
     'ution',
-    'gtvRI',
-    'rUNle',
+    'gtvRI',    'rUNle',
   ];
   return (_0xd99c = function () {
     return t;

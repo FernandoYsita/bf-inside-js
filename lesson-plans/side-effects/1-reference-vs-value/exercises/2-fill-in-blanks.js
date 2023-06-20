@@ -1,17 +1,23 @@
 'use strict';
 
 // prettier-ignore
-const deepCompare = (actual, expect) => actual === expect || Object.is(actual, expect) || (Object(actual) === actual && Object(expect) === expect) && (Array.isArray(actual) && Array.isArray(expect) && actual.length === expect.length && expect.every((expect, index) => deepCompare(actual[index], expect)) || Object.keys(actual).length === Object.keys(expect).length && Object.keys(expect).every((key) => deepCompare(actual[key], expect[key])));
+const deepCompare = (actual, expected) =>
+  actual === expected ||
+  (Object.is(actual, expected) ||
+    (Object(actual) === actual &&
+      Object(expected) === expected &&
+      ((Array.isArray(actual) &&
+        Array.isArray(expected) &&
+        actual.length === expected.length &&
+        expected.every((exp, index) => deepCompare(actual[index], exp)))) ||
+      (Object.keys(actual).length === Object.keys(expected).length &&
+        Object.keys(expected).every(key => deepCompare(actual[key], expected[key])))));
 
-// two different arrays with the same values
-//  how many solutions can you find?
-// psst.  use JS Tutor & the debugger
-
-const array1 = _;
-const array2 = _;
+const array1 = [1, 2, 3];
+const array2 = [1, 2, 3];
 
 const test1 = array1 !== array2;
-console.assert(test1, 'Test 1');
+console.assert(test1, 'Test 1'); // This will pass as the arrays have different references.
 
 const test2 = deepCompare(array1, array2);
-console.assert(test2, 'Test 2');
+console.assert(test2, 'Test 2'); // This will pass as the contents of the arrays are the same.

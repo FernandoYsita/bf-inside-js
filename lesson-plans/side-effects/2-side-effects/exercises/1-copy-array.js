@@ -6,10 +6,10 @@ const deepCompare = (actual, expect) => actual === expect || Object.is(actual, e
 /**
  * Returns a shallow copy of an array.
  *
- * @param {number[]} [arr=[]] - __
- * @returns {number[]} __
+ * @param {number[]} [arr=[]] - Array to be copied.
+ * @returns {number[]} Shallow copy of the array.
  */
-const copyArray = () => {};
+const copyArray = (arr = []) => arr.slice();
 
 const _1_arg = [1, 2, 3];
 const _1_returned = copyArray(_1_arg);

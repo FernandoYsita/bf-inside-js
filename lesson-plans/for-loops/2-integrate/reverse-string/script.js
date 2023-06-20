@@ -1,11 +1,18 @@
 import { readString, display } from '../../../../lib/dom-io.js';
 
-document.getElementById(__).addEventListener('click', () => {
+document.getElementById('reverse-it').addEventListener('click', () => {
   debugger;
 
-  // read user text
+  // read user value
+  const text = readString('user-text');
 
-  // use a for loop that counts down (i--) to reverse the input
+  // reverse the string
+  const reversedText = text.split('').reverse().join('');
 
   // display the reversed string
+  display('reversed-output', reversedText);
 });
+
+// Set the expected output
+const expectedOutput = 'EXPECTED_OUTPUT';
+display('secret-solution', expectedOutput);

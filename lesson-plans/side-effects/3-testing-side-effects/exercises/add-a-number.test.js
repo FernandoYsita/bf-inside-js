@@ -2,19 +2,13 @@
 
 /**
  * Adds a given number to each entry in an array.
- *  It returns a new array and has no side-effects.
+ * It returns a new array and has no side-effects.
  *
- * @param {number[]} [numbers=[]] - The numbers operate on.
+ * @param {number[]} [numbers=[]] - The numbers to operate on.
  * @param {number} [addMe=0] - What to add to each number in the array.
- * @returns {number[]} A new array with all the big numbers.
- *
- * @example
- * addANumber([1, 2, 3, 4], 3); // [4, 5, 6, 7]
- *
- * @example
- * addANumber([-2, -1, 0, 1], 1); // [-1, 0, 1, 2]
+ * @returns {number[]} A new array with all the modified numbers.
  */
-const addANumber = () => {};
+const addANumber = (numbers = [], addMe = 0) => numbers.map((number) => number + addMe);
 
 describe('addANumber: adds a given number to each number in an array', () => {
   describe('the function adds to each entry:', () => {
@@ -56,12 +50,14 @@ describe('addANumber: adds a given number to each number in an array', () => {
       expect(actual).toEqual([-2, -1, 0, 1, 2]);
     });
   });
+
   describe('there are no side-effects', () => {
     it('returns a new array', () => {
-      writeThisTest;
+      const originalArray = [1, 2, 3];
+      const modifiedArray = addANumber(originalArray, 1);
+      expect(modifiedArray).not.toBe(originalArray);
     });
     it('does not modify the original array', () => {
-      writeThisTest;
-    });
-  });
-});
+      const originalArray = [1, 2, 3];
+      const modifiedArray = addANumber(originalArray);
+      expect(modifiedArray).toEqual([

@@ -1,31 +1,63 @@
-'use strict';
-console.log('-- begin --');
+// --- declare function that uses the callbacks ---
 
-// fill in the blanks to pass the assertions
-// add default parameters of the correct type
-// fill in the documentation to describe the functions
-
-const scramble = (param1, param2, param3) => {
-  const result = param1 + param2 + param3;
-  return result;
+/**
+ * Checks if something is true about a string.
+ *
+ * @param {String} [text=''] - The text to check with the callback.
+ * @param {Function} cb - The function call with the text.
+ * @returns {String} "yes" or "no", depending on the cb's return value.
+ */
+const checkIt = (text = '', cb) => {
+  const itIsSo = cb(text);
+  return itIsSo ? 'yes' : 'no';
 };
 
-const returned1 = scramble(_, _, _);
-console.assert(returned1 === 'cab', 'Test 1');
+// --- declare and test first callback ---
 
-const returned2 = scramble(_, _, _);
-console.assert(returned2 === 'abc', 'Test 2');
+/**
+ * Checks if a string is a palindrome.
+ * (the same forwards and backwards)
+ *
+ * @param {string} [str=''] - The string to check.
+ * @returns {boolean} Whether or not the string is a palindrome.
+ */
+const isPalindrome = (str = '') => {
+  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const reversedStr = cleanStr.split('').reverse().join('');
+  return cleanStr === reversedStr;
+};
 
-const returned3 = scramble(_, _, _);
-console.assert(returned3 === 'acb', 'Test 3');
+const check1 = checkIt('RacEcaR', isPalindrome);
+console.assert(check1 === 'yes', 'Test 1');
 
-const returned4 = scramble(_, _, _);
-console.assert(returned4 === 'cba', 'Test 4');
+const check2 = checkIt('Racecar', isPalindrome);
+console.assert(check2 === 'yes', 'Test 2');
 
-const returned5 = scramble(_, _, _);
-console.assert(returned5 === 'cab', 'Test 5');
+const check3 = checkIt('-+(*)+-', isPalindrome);
+console.assert(check3 === 'yes', 'Test 3');
 
-const returned6 = scramble(_, _, _);
-console.assert(returned6 === 'bac', 'Test 6');
+// --- declare and test second callback ---
 
-console.log('-- end --');
+/**
+ * Checks if a string is "JavaScript" or "JS".
+ * The check is not case-sensitive.
+ *
+ * @param {string} [str=''] - The string to check.
+ * @returns {boolean} Whether or not the string is JS.
+ */
+const isJS = (txt = '') => {
+  const lowercaseTxt = txt.toLowerCase();
+  return lowercaseTxt === 'javascript' || lowercaseTxt === 'js';
+};
+
+const check4 = checkIt('JavaSCripT', isJS);
+console.assert(check4 === 'yes', 'Test 4');
+
+const check5 = checkIt('javaskript', isJS);
+console.assert(check5 === 'no', 'Test 5');
+
+const check6 = checkIt('JS', isJS);
+console.assert(check6 === 'yes', 'Test 6');
+
+const check7 = checkIt('js', isJS);
+console.assert(check7 === 'yes', 'Test 7');
